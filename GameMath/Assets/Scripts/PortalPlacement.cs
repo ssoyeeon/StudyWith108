@@ -8,7 +8,6 @@ public class PortalPlacement : MonoBehaviour
     [SerializeField]
     private LayerMask layerMask;       // 포털 배치 가능한 레이어
     [SerializeField]
-    private Crosshair crosshair;
     private CameraMove cameraMove;     // 카메라 이동 컴포넌트
 
     private void Awake()
@@ -79,10 +78,7 @@ public class PortalPlacement : MonoBehaviour
             var portalRotation = Quaternion.LookRotation(portalForward, portalUp);
 
             // 포털 배치 시도
-            bool wasPlaced = portals.Portals[portalID].PlacePortal(hit.collider, hit.point, portalRotation); if (wasPlaced)
-            {
-                crosshair.SetPortalPlaced(portalID, true);
-            }
+            bool wasPlaced = portals.Portals[portalID].PlacePortal(hit.collider, hit.point, portalRotation);
         }
     }
 }
