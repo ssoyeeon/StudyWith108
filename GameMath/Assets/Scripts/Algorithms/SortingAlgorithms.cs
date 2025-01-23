@@ -83,10 +83,10 @@ public class SortingAlgorithms : MonoBehaviour
     {
         if (low < high)
         {
-            int pi = yield return StartCoroutine(Partition(arr, low, high));
+            yield return StartCoroutine(Partition(arr, low, high));
 
-            yield return StartCoroutine(QuickSort(arr, low, pi - 1));
-            yield return StartCoroutine(QuickSort(arr, pi + 1, high));
+            //yield return StartCoroutine(QuickSort(arr, low, pi - 1));
+            //yield return StartCoroutine(QuickSort(arr, pi + 1, high));
         }
     }
 
