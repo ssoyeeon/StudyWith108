@@ -1,18 +1,41 @@
-using System.Collections;
-using System.Collections.Generic;
+// UIManager.cs
 using UnityEngine;
+using UnityEngine.UI;
 
 public class UIManager : MonoBehaviour
 {
-    // Start is called before the first frame update
+    private SortingAlgorithms sortingAlgorithms;
+    private SortingManager sortingManager;
+
     void Start()
     {
-        
+        sortingAlgorithms = FindObjectOfType<SortingAlgorithms>();
+        sortingManager = FindObjectOfType<SortingManager>();
     }
 
-    // Update is called once per frame
-    void Update()
+    public void StartBubbleSort()
     {
-        
+        StartCoroutine(sortingAlgorithms.BubbleSort(sortingManager.GetValues()));
+    }
+
+    public void StartSelectionSort()
+    {
+        StartCoroutine(sortingAlgorithms.SelectionSort(sortingManager.GetValues()));
+    }
+
+    public void StartInsertionSort()
+    {
+        StartCoroutine(sortingAlgorithms.InsertionSort(sortingManager.GetValues()));
+    }
+
+    public void StartQuickSort()
+    {
+        int[] arr = sortingManager.GetValues();
+        StartCoroutine(sortingAlgorithms.QuickSort(arr, 0, arr.Length - 1));
+    }
+
+    public void ResetArray()
+    {
+        sortingManager.ResetArray();
     }
 }
